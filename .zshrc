@@ -80,6 +80,8 @@ export TYPEWRITTEN_PROMPT_LAYOUT="pure_verbose"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
+export BROWSER="/usr/bin/firefox"
+
 source $ZSH/oh-my-zsh.sh
 
 wal -r && clear

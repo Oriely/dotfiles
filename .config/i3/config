@@ -51,7 +51,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id "rofi -show drun -show-icons"
+bindsym $mod+d exec --no-startup-id $HOME/.custom-scripts/rofilauncher.sh
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -196,6 +196,6 @@ bindsym Shift+Print exec flameshot gui
 for_window [class="^.*"] border pixel 0
 gaps inner 15
 exec_always --no-startup-id wal -R -l
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh --colorblocks
+exec_always --no-startup-id $HOME/.custom-scripts/polybar.sh
 exec_always --no-startup-id picom --experimental-backends --config "/home/oriely/.config/picom/picom.conf"
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &

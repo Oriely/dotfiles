@@ -1,0 +1,166 @@
+configuration {
+	application-fallback-icon: "/home/oriely/Pictures/sittingcat.png";
+	display-drun:    "Activate";
+	display-run:     "Execute";
+	display-window:  "Window";
+	show-icons:      true;
+}
+
+* {
+	font: "Iosevka 18";
+    text:                        #a5c8f2;
+    clear:                       #00000000;
+    red:                         #073351;
+    blue:                        #2aa1b7;
+    lightfg:                     #87b0e6;
+    lightbg:                     #0e82b0;
+    foreground:                  #6ad6ef;
+    background:                  #094e62;
+    background-color:            #416289;
+    separatorcolor:              @foreground;
+    border-color:                @foreground;
+    text-color:                  @text;
+    selected-normal-foreground:  @lightbg;
+    selected-normal-background:  @lightfg;
+    selected-active-foreground:  @background;
+    selected-active-background:  @blue;
+    selected-urgent-foreground:  @background;
+    selected-urgent-background:  @red;
+    normal-foreground:           @foreground;
+    normal-background:           @background;
+    active-foreground:           @blue;
+    active-background:           @background;
+    urgent-foreground:           @red;
+    urgent-background:           @background;
+    alternate-normal-foreground: @foreground;
+    alternate-normal-background: @lightbg;
+    alternate-active-foreground: @blue;
+    alternate-active-background: @lightbg;
+    alternate-urgent-foreground: @red;
+    alternate-urgent-background: @lightbg;
+    spacing:                     2;
+
+	auto-select: false;
+	line-margin: 18;
+	separator-style: "solid";
+	hide-scrollbar: true;
+}
+
+element-icon, element-text, scrollbar {
+  cursor: pointer;
+  
+}
+
+window {
+  location : center;
+  width    : 100%;
+  height   : 100%;
+
+  background-color : @bg1;
+}
+
+button {
+    spacing:          0;
+    text-color:       @normal-foreground;
+}
+button selected {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+
+mainbox {
+  padding : 300px;
+  spacing : 2px; 
+
+
+}
+
+inputbar {
+  padding          : 20px;
+  spacing          : 4px;
+  children         : [ entry ];
+  background-color : @bg0;
+}
+
+
+icon-search, entry, element-icon, element-text {
+  vertical-align: 0.5;
+}
+
+icon-search {
+  expand   : false;
+  filename : "/home/oriely/Pictures/sittingcat.png";
+  size     : 60px;
+}
+
+entry {
+  placeholder       : "Type here to search";
+  placeholder-color : @fg1;
+  text-color: #FFFFFF;
+  
+}
+
+textbox {
+  padding          : 4px 2px;
+  
+}
+
+listview {
+  columns       : 1;
+  
+  spacing       : 0px;
+}
+element {
+  orientation: horizontal;
+}
+element-text {
+      vertical-align: 0.50;
+}
+element {
+    children: [element-icon, element-text];
+    background-image: linear-gradient(to right, #87b0e666, #6ad6ef4d, #094e6233);
+    border:           0;
+    padding:          16px ;
+}
+element normal.normal {
+    background-color: @normal-background;
+    text-color:       @normal-foreground;
+}
+element normal.urgent {
+    background-color: @urgent-background;
+    text-color:       @urgent-foreground;
+}
+element normal.active {
+    background-color: @active-background;
+    text-color:       @active-foreground;
+}
+element selected.normal {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+element selected.urgent {
+    background-color: @selected-urgent-background;
+    text-color:       @selected-urgent-foreground;
+}
+element selected.active {
+    background-color: @selected-active-background;
+    text-color:       @selected-active-foreground;
+}
+element alternate.normal {
+    background-color: @alternate-normal-background;
+    text-color:       @alternate-normal-foreground;
+}
+element alternate.urgent {
+    background-color: @alternate-urgent-background;
+    text-color:       @alternate-urgent-foreground;
+}
+
+
+element-icon {
+  size: 2em;
+}
+
+element-text {
+  text-color       : inherit;
+  
+}
