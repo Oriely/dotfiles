@@ -92,24 +92,7 @@ dotcfg () {
 
 
 [[ "$TERM" == "xterm-kitty" ]] && alias ssh="kitty +kitten ssh"
-
-export PF_INFO="ascii title os host kernel uptime pkgs memory"
-export PF_COLOR=1
-
-# Color of info names:
-# Default: unset (auto)
-# Valid: 0-9
-export PF_COL1=4
-
-# Color of info data:
-# Default: unset (auto)
-# Valid: 0-9
-export PF_COL2=9
-
-# Color of title data:
-# Default: unset (auto)
-# Valid: 0-9
-export PF_COL3=1
-
+# OFF by default: shell editor wm de palette
+export PF_INFO="ascii title os host kernel uptime pkgs memory palette editor"
 
 pfetch
