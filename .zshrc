@@ -90,6 +90,7 @@ dotcfg () {
   git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" "$@"
 }
 
+alias spt='$HOME/.custom-scripts/spotify.sh'
 
 [[ "$TERM" == "xterm-kitty" ]] && alias ssh="kitty +kitten ssh"
 # OFF by default: shell editor wm de palette

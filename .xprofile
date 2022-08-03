@@ -1,7 +1,1 @@
-udiskie &
-wal -R -n
-feh --no-xinerama --no-fehbg --bg-tile "/home/oriely/background.jpg"
-setxkbmap -layout no
-xset b off
-xfce4-power-manager &
-blueberry &
+$HOME/.custom-scripts/startup.sh

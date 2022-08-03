@@ -17,7 +17,7 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+font pango:Iosevka 15
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -51,7 +51,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id $HOME/.custom-scripts/rofilauncher.sh
+bindsym $mod+d exec --no-startup-id rofi -show drun -drun-match-fields
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -187,14 +187,51 @@ bindsym $mod+r mode "resize"
 
 
 # Custom
+set_from_resource $xrdb1 color0 #000000
+set_from_resource $xrdb2 color1 #000000
+set_from_resource $xrdb3 color2 #000000
+set_from_resource $xrdb4 color3 #000000
 
 
-bindsym Print exec flameshot screen -c -p ~/Pictures/screenshots
-bindsym Shift+Print exec flameshot gui
+client.background       #ffffff
+
+set $bg-color 	                #FFFFFF
+set $bd-color		        #321dqq
+set $inactive-bg-color          #CCCCCC
+set $inactive-bd-color	        #383C4A
+set $text-color                 #f3f4f5
+set $inactive-text-color        #676E7D
+#				border			background		text	 	 	        indicator	child border 
+client.focused          	$bd-color		$bg-color		$text-color   		        $bd-color	$bd-color  
+client.unfocused        	$bg-color		$bg-color 		$inactive-text-color            $bg-color	$bg-color
+client.focused_inactive		$bg-color		$bg-color	 	$inactive-text-color            $bg-color	$bg-color
+client.urgent           	$bg-color   	        $bg-color		$text-color		        $bg-color	$bg-color
+client.background  					$bg-color
+
+for_window [class="Alacritty" title="htop"] move scratchpad
+
+bindsym Print           exec flameshot screen -c -p ~/Pictures/screenshots
+bindsym Shift+Print     exec flameshot gui
+bindsym $mod+Delete exec pkill picom
+bindsym $mod+Insert exec picom --experimental-backends --config "$HOME/.config/picom/picom.conf"
 
 
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] title_window_icon enable
 gaps inner 15
-exec_always --no-startup-id wal -R -l
+for_window [class="^.*"] border pixel 0
+
+exec --no-startup-id alacritty -t htop -e htop
+exec --no-startup-id alacritty -t ncmpcpp -e ncmpcpp
+exec --no-startup-id alacritty -t ranger -e ranger
+
+for_window [class="Alacritty" title="htop"] move scratchpad
+for_window [class="Alacritty" title="ranger"] move scratchpad
+for_window [class="Alacritty" title="ncmpcpp"] move scratchpad
+
+bindsym $mod+F1 [class="Alacritty" title="htop"] scratchpad show; move position center
+bindsym $mod+F2 [class="Alacritty" title="ranger"] scratchpad show; move position center
+bindsym $mod+F3 [class="Alacritty" title="ncmpcpp"] scratchpad show; move position center
+
+exec_always --no-startup-id wal -i "$HOME/Pictures/wallpapers"
 exec_always --no-startup-id $HOME/.custom-scripts/polybar.sh
 exec_always --no-startup-id picom --experimental-backends --config "$HOME/.config/picom/picom.conf"

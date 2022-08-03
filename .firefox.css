@@ -1,0 +1,100 @@
+
+:root {
+    --toolbar-field-background-color: var(--color0) !important ; /* adress bar */
+    --tabpanel-background-color: var(--color3) !important;
+    --toolbar-bgcolor: var(--color0) !important; /*TOP BAR*/
+    --toolbar-bgimage: none !important;
+  }
+  
+  #nav-bar {
+  
+    }
+    
+    
+    #PersonalToolbar {
+  
+      font-size:12px;
+    }
+    
+    
+    
+    #navigator-toolbox {
+      border-bottom:none;
+      margin-left:155px;
+  
+    }
+    #tabbrowser-tabs {
+  
+    }
+    h1 {
+    }
+  
+  
+    /* hides the native tabs */
+    .tab-background[selected="true"] {
+    
+  
+    
+    } tab[selected="true"] {
+    
+  
+    
+    } tab:not([selected="true"]) {
+  
+    } tab:hover {
+    
+  
+    
+    }
+    
+    #titlebar {
+      visibility: collapse;
+    }
+    
+    /* Tree Style Tabs*/
+    
+    
+    #sidebar {
+      max-width:150px !important;
+      min-width:150px !important;
+  
+    }
+    
+    #sidebar-box {
+      margin-top:-69px;
+      
+    }
+    
+    
+    #sidebar-splitter {
+      background: green !important;;
+      border:0 !important;
+      width:5px !important;;
+      margin-top:-72px;
+          background: var(--color0) !important;
+    }
+    #tabbar { scrollbar-width: none; }
+    #sidebar-header {
+      background:green !important;
+            display:none;
+      font-size:12px !important;
+      z-index: 999 !important;
+      margin:0 !important;
+      padding:2px !important;; 
+          background: var(--color0) !important
+  
+  }
+  
+  
+  #sidebar-box[sidebarcommand="treezstyletab_piro_sakura_ne_jp-sidebar-action"] #a {
+    display: none;
+  }
+  
+  
+  
+
+/*Copy into tree style tabs */
+
+/* :root.sidebar #background {
+    background: #070718 !important;
+} */
