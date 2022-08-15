@@ -15,7 +15,7 @@
 # full_circle     full_square     full_rounded     full_alt
 # row_circle      row_square      row_rounded      row_alt
 
-theme="drop_square"
+theme="column_square"
 dir="$HOME/.config/rofi/powermenu"
 
 # # random colors
@@ -55,7 +55,7 @@ msg() {
 }
 
 # Variable passed to rofi
-options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
+options="$shutdown\n$reboot\n$lock\n$logout"
 
 chosen="$(echo -e "$options" | $rofi_command -p "Uptime: $uptime" -dmenu -selected-row 2)"
 case $chosen in
@@ -80,8 +80,10 @@ case $chosen in
         fi
         ;;
     $lock)
-		if [[ -f /usr/bin/betterlockscreen ]]; then
-			betterlockscreen -l
+		if [[ -f /usr/bin/light-locker ]]; then
+			light-locker-command -l
+		elif [[ -f /usr/bin/betterlockscreen ]]; then
+			i3lock
 		elif [[ -f /usr/bin/i3lock ]]; then
 			i3lock
 		fi

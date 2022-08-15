@@ -4,3 +4,4 @@ export BROWSER="/usr/bin/firefox"
 export TERM="/usr/bin/alacritty"
 export TERMINAL="/usr/bin/alacritty"
 export PATH="/home/ash/.local/bin:$PATH"
+export STEAM_FRAME_FORCE_CLOSE=1

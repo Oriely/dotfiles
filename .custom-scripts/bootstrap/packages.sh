@@ -1,5 +1,32 @@
  #!/usr/bin/env sh
 
+WORKDIR="$HOME/bootstrap"
+
+
+core=(
+
+	"linux-headers"
+	"lightdm"
+	"zsh"
+	"udiskie"
+	"wmctrl"
+	"xorg-xwininfo"
+	"xorg-xprop"
+)
+
+compositors=(
+	"picom-jonaburg-git"
+	"picom"
+)
+
+utility=(
+	"flameshot"
+)
+
+fonts=(
+	"wqy-zenhei"
+)
+
 programming_packages=(
 	"nodejs"
     "npm"
@@ -25,7 +52,12 @@ aurpackages=(
 	"macchina"
 	"clipit"
 	"networkmanager-dmenu-git"
-	"picom-jonaburg-git"
+
 	"i3lock-color"
 	"gdlauncher"
 )
+
+echo ${programming_packages[*]}
+echo ${nvidia_packages[*]}
+
+echo ${aurpackages[*]}

@@ -97,3 +97,7 @@ alias spt='$HOME/.custom-scripts/spotify.sh'
 export PF_INFO="ascii title os host kernel uptime pkgs memory palette editor"
 
 pfetch
+
+clear && cat /home/oriely/.cache/wal/sequences
+
+pfetch

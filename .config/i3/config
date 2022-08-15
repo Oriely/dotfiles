@@ -51,7 +51,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id rofi -show drun -drun-match-fields
+bindsym $mod+d exec --no-startup-id $HOME/.custom-scripts/rofi.sh
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -187,37 +187,72 @@ bindsym $mod+r mode "resize"
 
 
 # Custom
-set_from_resource $xrdb1 color0 #000000
-set_from_resource $xrdb2 color1 #000000
-set_from_resource $xrdb3 color2 #000000
-set_from_resource $xrdb4 color3 #000000
 
 
-client.background       #ffffff
+set $editor alacritty
 
-set $bg-color 	                #FFFFFF
-set $bd-color		        #321dqq
-set $inactive-bg-color          #CCCCCC
-set $inactive-bd-color	        #383C4A
-set $text-color                 #f3f4f5
-set $inactive-text-color        #676E7D
-#				border			background		text	 	 	        indicator	child border 
-client.focused          	$bd-color		$bg-color		$text-color   		        $bd-color	$bd-color  
-client.unfocused        	$bg-color		$bg-color 		$inactive-text-color            $bg-color	$bg-color
-client.focused_inactive		$bg-color		$bg-color	 	$inactive-text-color            $bg-color	$bg-color
-client.urgent           	$bg-color   	        $bg-color		$text-color		        $bg-color	$bg-color
-client.background  					$bg-color
+
+# # Xresources colors
+set_from_resource $xrdb_background i3wm.background #000000
+set_from_resource $xrdb_foreground i3wm.foreground #000000
+set_from_resource $xrdb0 i3wm.color0 #000000
+set_from_resource $xrdb1 i3wm.color1 #000000
+set_from_resource $xrdb2 i3wm.color2 #000000
+set_from_resource $xrdb3 i3wm.color3 #000000
+set_from_resource $xrdb4 i3wm.color4 #000000
+set_from_resource $xrdb5 i3wm.color5 #000000
+set_from_resource $xrdb6 i3wm.color6 #000000
+set_from_resource $xrdb7 i3wm.color7 #000000
+
+# set $focused-bg-color 	                $xrdb6
+# set $focused-bd-color		        $xrdb6
+
+# set $focused-inactive-bg-color 	        $xrdb6
+# set $focused-inactive-bd-color	        $xrdb6
+
+# set $unfocused-bg-color 	        $xrdb6
+# set $unfocused-bd-color		        $xrdb6
+
+# set $inactive-bg-color                  $xrdb6
+# set $inactive-bd-color	                $xrdb6
+
+# set $urgent-bg-color                    $xrdb6
+# set $urgent-bd-color	                $xrdb6
+
+# set $text-color                         $xrdb6
+# set $inactive-text-color                $xrdb6
+# set $focused-inactive-text-color        $xrdb6
+
+#				border			background		text	 	 	indicator	child border 
+client.focused          	$xrdb_background        $xrdb1                  $xrdb7            	$bd-color	$bd-color  
+client.unfocused        	$xrdb_background        $xrdb_background 	$xrdb_foreground        $bg-color	$bg-color
+client.focused_inactive		$xrdb_background        $xrdb2		        $xrdb_foreground        $bg-color	$bg-color
+client.urgent           	$xrdb_background        $xrdb_background	$xrdb_foreground	$bg-color	$bg-color
+client.background  					$xrdb_background
+
+# client.focused          	$focused-bd-color		$focused-bg-color		$text-color   		        $bd-color	$bd-color  
+# client.unfocused        	$unfocused-bd-color		$unfocused-bg-color 	        $inactive-text-color            $bg-color	$bg-color
+# client.focused_inactive		$focused-inactive-bd-color	$focused-inactive-bg-color	$inactive-text-color            $bg-color	$bg-color
+# client.urgent           	$urgent-bd-color   	        $urgent-bg-color		$text-color		        $bg-color	$bg-color
+# client.background  					        $bg-color
+
+exec_always --no-startup-id wal -i "$HOME/Pictures/wallpapers/skullknight.jpg"
+exec_always --no-startup-id $HOME/.custom-scripts/polybar.sh
+exec_always --no-startup-id $HOME/.custom-scripts/dunst.sh
+exec_always --no-startup-id $HOME/.custom-scripts/picom.sh
+
+bindsym $mod+Delete exec pkill picom
+bindsym $mod+Insert exec picom --experimental-backends --config "$HOME/.config/picom/picom.conf"
+bindsym $mod+Tab exec rofi -show window -theme custom
+
 
 for_window [class="Alacritty" title="htop"] move scratchpad
 
-bindsym Print           exec flameshot screen -c -p ~/Pictures/screenshots
+bindsym Print           exec $HOME/.custom-scripts/screenshot.sh
 bindsym Shift+Print     exec flameshot gui
-bindsym $mod+Delete exec pkill picom
-bindsym $mod+Insert exec picom --experimental-backends --config "$HOME/.config/picom/picom.conf"
-
 
 for_window [class="^.*"] title_window_icon enable
-gaps inner 15
+gaps inner 16
 for_window [class="^.*"] border pixel 0
 
 exec --no-startup-id alacritty -t htop -e htop
@@ -232,6 +267,3 @@ bindsym $mod+F1 [class="Alacritty" title="htop"] scratchpad show; move position 
 bindsym $mod+F2 [class="Alacritty" title="ranger"] scratchpad show; move position center
 bindsym $mod+F3 [class="Alacritty" title="ncmpcpp"] scratchpad show; move position center
 
-exec_always --no-startup-id wal -i "$HOME/Pictures/wallpapers"
-exec_always --no-startup-id $HOME/.custom-scripts/polybar.sh
-exec_always --no-startup-id picom --experimental-backends --config "$HOME/.config/picom/picom.conf"
