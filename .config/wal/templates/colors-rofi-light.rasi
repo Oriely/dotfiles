@@ -1,0 +1,40 @@
+* {{
+    active-background: {color2};
+    active-foreground: @foreground;
+    normal-background: @background;
+    normal-foreground: @foreground;
+    urgent-background: {color1};
+    urgent-foreground: @foreground;
+
+    alternate-active-background: @background;
+    alternate-active-foreground: @foreground;
+    alternate-normal-background: @background;
+    alternate-normal-foreground: @foreground;
+    alternate-urgent-background: @background;
+    alternate-urgent-foreground: @foreground;
+
+    selected-active-background: {color1};
+    selected-active-foreground: @foreground;
+    selected-normal-background: {color2};
+    selected-normal-foreground: @foreground;
+    selected-urgent-background: {color3};
+    selected-urgent-foreground: @foreground;
+
+    background-color: @background;
+    background: {background};
+    foreground: {foreground};
+    border-color: @background;
+    spacing: 2;
+
+
+    pycol-color0: {color0};
+    pycol-color1: {color1};
+    pycol-color2: {color2};
+    pycol-color3: {color3};
+    pycol-color4: {color4};
+    pycol-color5: {color5};
+    pycol-color6: {color6};
+    pycol-color7: {color7};
+    pycol-color8: {color8};
+    pycol-color9: {color9};
+}}

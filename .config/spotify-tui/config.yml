@@ -66,7 +66,7 @@ keybindings:
   help: "?"
   shuffle: "ctrl-s"
   repeat: "r"
-  search: "/"
+  search: "|"
   audio_analysis: "v"
   jump_to_context: "o"
   basic_view: "B"
