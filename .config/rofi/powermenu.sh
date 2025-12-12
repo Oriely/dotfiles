@@ -1,0 +1,1 @@
+rofi -show p -modi p:'rofi-power-menu --symbols-font "Iosevka Nerd Font"' -font "Iosevka Nerd Font 30" -theme-str 'window {width: 15em;} listview {lines: 6;}'

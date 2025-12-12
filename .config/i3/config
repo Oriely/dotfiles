@@ -1,0 +1,20 @@
+# i3 main config
+# Mod key
+set $mod Mod4
+
+# Common commands
+set $refresh_i3status killall -SIGUSR1 i3status
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# move tiling windows via drag & drop by left-clicking into the title bar,
+# or left-clicking anywhere into the window while holding the floating modifier.
+tiling_drag modifier titlebar
+
+include ~/.config/i3/includes/appearance.conf
+include ~/.config/i3/includes/startup.conf
+include ~/.config/i3/includes/keybindings.conf
+include ~/.config/i3/includes/scratchpads.conf
+include ~/.config/i3/includes/workspace.conf
+include ~/.config/i3/includes/rules.conf

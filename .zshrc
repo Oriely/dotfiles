@@ -16,4 +16,11 @@ alias pq='sudo pacman -Q'
 
 alias dotcfg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+alias ssh='TERM=xterm ssh'
+
+
 fastfetch
+
+#if uwsm check may-start; then
+#    exec uwsm start hyprland-uwsm.desktop
+#fi
