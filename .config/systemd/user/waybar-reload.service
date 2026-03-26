@@ -3,5 +3,5 @@ Description=Reload waybar css
 
 [Service]
 Type=oneshot
-ExecStart=killall waybar
+ExecStart=systemctl --user restart waybar.service 
 ExecStart=notify-send -e -a "Waybar" -i %h/Pictures/waybar-logo.png "Waybar" "Configuration changed, reloading..."

@@ -1,17 +1,27 @@
 #!/bin/bash
-
-entries="⇠ Logout\n⏾ Suspend\n⭮ Reboot\n⏻ Shutdown"
-
-selected=$(echo -e $entries|wofi --location top_left --width 250 --height 240 --dmenu --cache-file /dev/null | awk '{print tolower($2)}')
-
-case $selected in
-  logout)
-    pkill -u kia;;
-  suspend)
-    exec systemctl suspend;;
-  reboot)
-    exec systemctl reboot;;
-  shutdown)
-    exec systemctl poweroff;;
-    # it used to be poweroff -i
+case $(wofi -d -L 6 -l 3 -W 100 -x -100 -y 10 \
+    -D dynamic_lines=true << EOF | sed 's/^ *//'
+    Shutdown
+    Reboot
+    Log off
+    Sleep
+    Lock
+    Cancel
+EOF
+) in
+    "Shutdown")
+        systemctl poweroff
+        ;;
+    "Reboot")
+        systemctl reboot
+        ;;
+    "Sleep")
+        systemctl suspend
+        ;;
+    "Lock")
+        loginctl lock-session
+        ;;
+    "Log off")
+        swaymsg exit
+        ;;
 esac

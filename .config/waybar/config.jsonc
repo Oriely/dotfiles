@@ -1,198 +1,198 @@
-// -*- mode: jsonc -*-
-{
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 10, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 0, // Gaps between modules (4px)
-    // Choose the order of the modules
-    "modules-left": [
-      "custom/app-menu",
-      "hyprland/window",
-    ],
-    "modules-center": [
-        "hyprland/workspaces",
-    //    "hyprland/window",
-        "custom/notification"
-
-    ],
-    "modules-right": [
-        "keyboard-state",
-        "pulseaudio#input",
-        "pulseaudio#output",
-        "cpu",
-        "memory",
-        "temperature",
-        "network",
-        "tray",
-        "clock",
-        "custom/power"
-    ],
-    "hyprland/workspaces": {
-        "format": "{icon} {windows}",
-        "format-window-separator": "",
-        "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "6": "",
-            "7": "󰝚",
-            "8": "󰺵",
-            "9": "",
-            // "active": "",
-            // "default": ""
+[
+    {
+        "name": "topbar",
+        "layer": "bottom",
+        "position": "top",
+        "height": 35,
+        "modules-left": [
+            "disk",
+            "disk#2",
+            "memory",
+            "cpu",
+            "temperature",
+            "pulseaudio#input",
+            "pulseaudio#output",
+            "backlight",
+            "idle_inhibitor"
+        ],
+        "modules-center": ["hyprland/window"],
+        "modules-right": [
+            "network#vpn",
+            "network#wifi",
+            "network#ethernet",
+            "network#disconnected",
+            "custom/notification",
+            "clock",
+            "custom/poweroff"
+        ],
+        "hyprland/window": {
+            "format": "{}",
+            "on-click": "swaymsg kill"
         },
-        "workspace-taskbar": {
-            "enable": true,
-            "update-active-window": true,
+        "idle_inhibitor": {
             "format": "{icon}",
-            // "format": "{icon} {title:.22}",
-            "icon-size": 25,
-            "on-click-window": "/home/sigve/.scripts/focus-window.sh {address} {button}"
-        }
-    },
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
-    },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-    "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-    "tray": {
-        "icon-size":20,
-        "spacing": 5,
-    },
-    "clock": {
-        "format": "  {:%H:%M}",
-        "format-alt": "  {:%A, %B %d, %Y (%R)}",
-        "tooltip-format": "<tt><small>{calendar}</small></tt>",
-        "calendar": {
-            "mode"          : "year",
-            "mode-mon-col"  : 3,
-            "weeks-pos"     : "right",
-            "on-scroll"     : 1,
-            "format": {
-                "months":     "<span color='#ffead3'><b>{}</b></span>",
-                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+            "format-icons": {
+                "activated": "",
+                "deactivated": ""
             }
         },
-        "actions":  {
-            "on-click-right": "mode",
-            "on-scroll-up": "tz_up",
-            "on-scroll-down": "tz_down",
-            "on-scroll-up": "shift_up",
-            "on-scroll-down": "shift_down"
+        "clock": {
+            "interval": 1,
+            "format": "<b>{:%H:%M:%S}</b>",
+            "format-alt": "{:%Y-%m-%d}",
+            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        },
+        "cpu": {
+            "format": " {usage}%",
+            "tooltip": false
+        },
+        "disk": {
+            "path": "/",
+            "format": " {path} {percentage_free}%",
+            "tooltip-format": "{used} / {total} used"
+        },
+        "disk#2": {
+            "path": "/home",
+            "format": " {path} {percentage_free}%",
+            "tooltip-format": "{used} / {total} used"
+        },
+        "memory": {
+            "format": " {}%",
+            "tooltip-format": "{used:0.1f}G / {total:0.1f}G used"
+        },
+        "temperature": {
+            "critical-threshold": 80,
+            "format": "{icon} {temperatureC}°C",
+            "format-icons": ["", "", "", "", ""]
+        },
+        "network#disconnected": {
+            "tooltip-format": "No connection!",
+            "format-ethernet": "",
+            "format-wifi": "",
+            "format-linked": "",
+            "format-disconnected": "",
+            "on-click": "nm-connection-editor"
+        },
+        "network#ethernet": {
+            "interface": "enp*",
+            "format-ethernet": "",
+            "format-wifi": "",
+            "format-linked": "",
+            "format-disconnected": "",
+            "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+            "on-click": "nm-connection-editor"
+        },
+        "network#wifi": {
+            "interface": "wlp*",
+            "format-ethernet": "",
+            "format-wifi": " {essid} ({signalStrength}%)",
+            "format-linked": "",
+            "format-disconnected": "",
+            "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+            "on-click": "nm-connection-editor"
+        },
+        "network#vpn": {
+            "interface": "wg*",
+            "format": "",
+            "format-disconnected": "",
+            "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+            "on-click": "nm-connection-editor"
+        },
+        "pulseaudio#input": {
+            "format-source": " {volume}%",
+            "format-source-muted": " off",
+            "format": "{format_source}",
+            "scroll-step": 1,
+            "smooth-scrolling-threshold": 1,
+            "max-volume": 100,
+            "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+            "on-click-middle": "pavucontrol",
+            "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +1%",
+            "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -1%",
+        },
+        "pulseaudio#output": {
+            "format": "{icon}   {volume}%",
+            "format-muted": " off",
+            "format-icons": {
+                "default": ["", "", ""]
+            },
+            "max-volume": 100,
+            "scroll-step": 2,
+            "smooth-scrolling-threshold": 1,
+            "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+            "on-click-middle": "pavucontrol",
+        },
+        "custom/poweroff": {
+            "tooltip": false,
+            "format": "",
+            "on-click": "bash $HOME/.scripts/powermenu.sh"
+        },
+        "custom/notification": {
+            "tooltip": false,
+            "format": "{} {icon}",
+            "format-icons": {
+            "notification": "󱅫",
+            "none": "",
+            "dnd-notification": " ",
+            "dnd-none": "󰂛",
+            "inhibited-notification": " ",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": " ",
+            "dnd-inhibited-none": " "
+            },
+            "return-type": "json",
+            "exec-if": "which swaync-client",
+            "exec": "swaync-client -swb",
+            "on-click": "sleep 0.1 && swaync-client -t -sw",
+            "on-click-right": "sleep 0.1 && swaync-client -d -sw",
+            "escape": true
         }
     },
-    "cpu": {
-        "format": "   {usage}%",
-        "tooltip": false
-    },
-    "memory": {
-        "format": "   {}%"
-    },
-    "temperature": {
-        // "thermal-zone": 2,
-        "hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon5/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{icon}  {temperatureC}°C",
-        "format-icons": ["", "", ""]
-    },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
-    },
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
-    "pulseaudio#input": {
-        "format-source": " {volume}%",
-        "format-source-muted": " off",
-        "format": "{format_source}",
-        "scroll-step": 1,
-        "smooth-scrolling-threshold": 1,
-        "max-volume": 100,
-        "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
-        "on-click-middle": "pavucontrol",
-        "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +1%",
-        "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -1%",
-    },
-    "pulseaudio#output": {
-        "format": "{icon}   {volume}%",
-        "format-muted": " off",
-        "format-icons": {
-            "default": ["", "", ""]
+    {
+        "name": "bottombar",
+        "layer": "bottom",
+        "position": "bottom",
+        "height": 35,
+        "modules-left": ["wlr/taskbar","keyboard-state"],
+        "modules-center": [ "hyprland/workspaces"],
+        "modules-right": ["sway/mode", "tray"],
+        "tray": {
+            "icon-size": 18,
+            "spacing": 10
         },
-        "max-volume": 100,
-        "scroll-step": 2,
-        "smooth-scrolling-threshold": 1,
-        "on-click": "pavucontrol",
-        "on-click-middle": "pavucontrol",
-    },
-    "custom/power": {
-        "format" : "⏻",
-        "tooltip": false,
-        "on-click": "/home/sigve/.scripts/powermenu.sh",
-        // "menu": "on-click",
-		// "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		// "menu-actions": {
-		// 	"shutdown": "shutdown",
-		// 	"reboot": "reboot",
-		// 	"suspend": "systemctl suspend",
-		// 	"hibernate": "systemctl hibernate"
-		// }
-    },
-    "custom/notification": {
-        "tooltip": false,
-        "format": "{icon} {text}",
-        "format-icons": {
-            "notification": "",
-            "none": " ",
-            "dnd-notification": "",
-            "dnd-none": " "
+        "wlr/taskbar": {
+            "format": "{icon}",
+            "icon-size": 18,
+            "tooltip-format": "{title}",
+            "on-click": "activate",
+            "on-click-middle": "close",
+            "all-outputs": false
         },
-        "return-type": "json",
-        "exec-if": "which swaync-client",
-        "exec": "swaync-client -swb",
-        "on-click": "sleep 0.1 && swaync-client -t -sw",
-        "on-click-right": "sleep 0.1 && swaync-client -d -sw",
-        "escape": true
-    },
-        "custom/app-menu": {
-        "format" : "󰣇",
-        "tooltip": false,
-        "on-click": "wofi --show drun --allow-images --width 1000",
-    },
-}
+        "hyprland/workspaces": {
+            "format": "{icon} {windows}",
+            "format-window-separator": "",
+            "format-icons": {
+                "1": "",
+                "2": "",
+                "3": "",
+                "4": "",
+                "5": "",
+                "6": "",
+                "7": "󰝚",
+                "8": "󰺵",
+                "9": "",
+                // "active": "",
+                // "default": ""
+            },
+        },
+        "keyboard-state": {
+            "numlock": true,
+            "capslock": true,
+            "format": "{name} {icon}",
+            "format-icons": {
+                "locked": "",
+                "unlocked": ""
+            }
+        }
+    }
+]

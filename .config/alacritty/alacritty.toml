@@ -78,7 +78,7 @@ cyan = "#ea9a97"
 white = "#e0def4"
 
 [font]
-size = 20.0
+size = 12.0
 
 [font.bold]
 family = "Iosevka Nerd Font"

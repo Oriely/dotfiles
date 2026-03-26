@@ -1,6 +1,11 @@
 [Unit]
 Description=Watch waybar for changes
+Unit=waybar-reload.service
 
 [Path]
-PathModified=%h/.config/waybar/style.css
-PathModified=%h/.config/waybar/config.jsonc
+#PathModified=%h/.config/waybar/style.css
+#PathModified=%h/.config/waybar/config.jsonc
+PathModified=%h/.config/waybar
+
+[Install]
+WantedBy=default.target
