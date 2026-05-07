@@ -111,7 +111,7 @@
             "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -1%",
         },
         "pulseaudio#output": {
-            "format": "{icon}   {volume}%",
+            "format": "{icon} {volume}%",
             "format-muted": " off",
             "format-icons": {
                 "default": ["", "", ""]
@@ -172,17 +172,8 @@
             "format": "{icon} {windows}",
             "format-window-separator": "",
             "format-icons": {
-                "1": "",
-                "2": "",
-                "3": "",
-                "4": "",
-                "5": "",
-                "6": "",
-                "7": "󰝚",
-                "8": "󰺵",
-                "9": "",
-                // "active": "",
-                // "default": ""
+                "active": "",
+                "default": ""
             },
         },
         "keyboard-state": {
